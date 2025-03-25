@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Caption Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    <h1>Image Caption Generator</h1>
+    <h2>Upload an Image to Generate a Caption</h2>
+    <form action="/predict" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Upload">
+    </form>
+
+    {% if caption %}
+        <h2>Generated Caption:</h2>
+        <p>{{ caption }}</p>
+        <img src="/{{ image_path }}" alt="Uploaded Image" style="max-width: 400px;">
+    {% endif %}
+</body>
+</html>
